@@ -16,6 +16,33 @@
 // 10% 3 = 1 - en 10 tenemos 3 * 3 + 1
 // 16% 4 = 0 - en 16 tenemos 4 * 4
 // 19% 4 = 3 - en 19 tenemos 4 * 4 + 3, etc.
+function fizzBuzz(){
+    for(let i = 0; i<=50; i++){
+        let texto = '';
+        if (i%3 ===0){
+            texto = 'Fizz';
+        }
+        if (i%5 === 0){
+            texto += 'Buzz';
+        }
+        console.log(texto || i);
+    }
+}
+
+//fizzBuzz();
 
 // Calcular el promedio de todos los números en un array de números. (y ponerlo en una función)
 // ej.: calcularPromedio([10,5,4,2,8])
+
+function calcularPromedioArray(){
+    const notasObtenidas = [8, 9.5, 6, 4, 7, 6, 10];
+    let sumatoriaNotas = 0;
+
+    for(let i = 0; i< notasObtenidas.length; i++){
+        sumatoriaNotas += Number(notasObtenidas[i]);
+    };
+
+    console.log(sumatoriaNotas / notasObtenidas.length);
+}
+
+calcularPromedioArray();
