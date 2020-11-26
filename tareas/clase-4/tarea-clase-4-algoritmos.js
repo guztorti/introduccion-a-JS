@@ -172,7 +172,8 @@ Desafío de programación #53. Calculate 70! with high precision (all decimals)
  }
 //imprimirDecena();
 //imprimirDecena(0);
-
+*/
+/*
 //#2
 function imprimirImpares(){
   const resultado = [];
@@ -183,7 +184,9 @@ function imprimirImpares(){
   }
   console.log(resultado);
 }
+*/
 
+/*
 //#3: Imprimí la tabla de multiplicación del 7
 
 function imprimirTablaDel(valor){
@@ -193,7 +196,10 @@ function imprimirTablaDel(valor){
   return '';
 }
 //imprimirTablaDel(7);
+*/ 
 
+/*
+//#4
 function todasLasTablas(){
   for(let i = 1; i<10;i++){
     console.log(imprimirTablaDel(i));
@@ -201,22 +207,44 @@ function todasLasTablas(){
 }
 
 //todasLasTablas();
+*/
+
 
 //#5
-function sumaArray(){
-  const arreglo = [1,2,3,4,5,6,7,8,9,10];
+function sumaArreglo(arreglo){
   let sumatoria = 0;
   for(let i=0; i<arreglo.length; i++){
-    sumatoria += arreglo[i];
+    sumatoria += Number(arreglo[i]);
   }
-  console.log('El resultado de la suma del array es:'+sumatoria);
+  return sumatoria;
 }
 
-//sumaArray();
+function poblarArreglo(){
+    let aux, continuar=true;
+  const arreglo = [];
+  do{
+    aux=prompt('Ingrese un valor para poblar el array\n o \"s\" para terminar');
+
+    if(aux.trim().toLowerCase() === 's'){
+      continuar = false;
+    }else {
+      aux = Number(aux);
+      if (!isNaN(aux)){
+          arreglo.push(aux);
+      } else{
+          alert("debe ingresar números");
+      }
+    }
+  }while (continuar);
+  return arreglo;
+}
+
+//sumaArreglo([1,2,3,4,5,6,7,8,9,10]);
+
 
 
 //#6
-//let resultado = 1;
+let resultado = 1;
 function factorial(valor = 10){
     if (valor !== 1){
       resultado = valor * factorial(valor-1);
@@ -225,7 +253,9 @@ function factorial(valor = 10){
   }
 
 //console.log(factorial(10));
-*/
+
+
+/*
 // #7
 
 function sumarImparesMayoresDiezMenoresTreinta(){
@@ -239,6 +269,247 @@ function sumarImparesMayoresDiezMenoresTreinta(){
   return resultado;
 }
 
-console.log(sumarImparesMayoresDiezMenoresTreinta());
+//console.log(sumarImparesMayoresDiezMenoresTreinta());
+*/
+
+/*
+//#8
+
+function pasarCelsiusAFarenheit(grados){
+  return grados * 1.8 +32 + 'ºF';
+}
+
+//console.log(`25ºC es el equivalente a ${pasarCelsiusAFarenheit(25)}`);
+*/
+
+/*
+//#9
+function pasarFarnheitACelcius(grados){
+  return (grados -32)/1.8 + 'ºC';
+}
+
+//console.log(`77ºF es el equivalente a ${pasarFarnheitACelcius(77)}`);
+*/
+
+/*
+// #10
+function poblarYSumarArreglo(){
+  const arreglo = poblarArreglo();
+
+  return 'la suma de los items de '+arreglo+' es:\n'+sumaArreglo(arreglo);
+}
+//console.log(poblarYSumarArreglo());
+*/
 
 
+//#11
+function promedioArreglo(arreglo){
+  return sumaArreglo(arreglo)/arreglo.length;
+}
+
+//console.log(promedioArreglo(poblarArreglo()));
+
+
+//#12
+function devolverArregloSoloPositivos(arreglo){
+  const resultado = [];
+
+  for(let i=0; i<arreglo.length;i++){
+    if (arreglo[i]>0){
+      resultado.push(arreglo[i]);
+    }
+  }
+  return resultado;
+}
+
+//console.log(devolverArregloSoloPositivos([0,1,-1,2,-2,3,-3,-4]));
+
+//#13
+
+function mayorDelArreglo(arreglo){
+  let maximo = arreglo[0];
+
+  for(let i=1; i<arreglo.length;i++){
+    if (arreglo[i]>maximo){
+      maximo = arreglo[i];
+    }
+  }
+  return maximo;
+}
+
+//console.log(mayorDelArreglo([-3,8,1,-12,5]));
+
+//#14
+function calcularSerieFibonacci(cantidad=10){
+    const resultado = [1,1]
+    let anterior=1, previo=1;
+
+    for(let i=2; i<cantidad; i++){
+        resultado.push(anterior+previo);
+        previo = anterior;
+        anterior = resultado[i];
+    }
+    return resultado;
+}
+
+//console.log(calcularSerieFibonacci(10));
+
+//#15
+
+function mostrarElementoFibonacciRecursion(cantidad=10){
+    if(cantidad === 1||cantidad ===2){
+      return 1
+    }else {
+      return mostrarElementoFibonacciRecursion(cantidad -1)+mostrarElementoFibonacciRecursion(cantidad -2);
+    }
+}
+
+//console.log(mostrarElementoFibonacciRecursion(9));
+
+//#16
+function decirSiEsPrimo(valor){
+
+    if(valor <=3){
+        return true;
+    }else {
+        for(let i = 2; i<valor; i++){
+            if(valor%i === 0){
+                return false;
+                } 
+          }
+      return true;
+      }
+    
+}
+
+//console.log(decirSiEsPrimo(prompt('¿es primo?')));
+
+//#17
+
+function sumarCifras(valor){
+  let resultado=0;
+  for(let i=0; i<valor.toString().length; i++){
+          resultado += Number(valor.toString()[i]);
+      }
+  return resultado;
+}
+
+//console.log(sumarCifras(prompt('Ingrese valor')));
+
+//#18
+function imprimirPrimerosPrimos(limite=100){
+    const resultado = [];
+
+    for(let i = 1; i<=limite; i++){
+        if(decirSiEsPrimo(i)){
+            resultado.push(i);
+        }
+    }
+    return resultado;
+
+}
+//console.log(imprimirPrimerosPrimos(100));
+
+//#19
+function imprimirCantidadNumerosPrimosMayoresQue(cantidad, limiteMenor){
+    const resultado = [];
+    let contador=0;
+
+    for(let i = ++limiteMenor; contador<=cantidad; i++){
+        if(decirSiEsPrimo(i)){
+            resultado.push(i);
+            contador++;
+        }
+    }
+    return resultado;
+}
+
+//console.log(imprimirCantidadNumerosPrimosMayoresQue(4, 5));
+
+//#20
+
+function rotarArregloIzquierda(arreglo){
+  const resultado = [];
+  let auxiliar = arreglo[arreglo.length-1];
+  resultado.push(auxiliar);
+  for(let i=0; i< arreglo.length-1; i++){
+    resultado.push(arreglo[i]);
+  }
+  return resultado;
+}
+
+//console.log(rotarArregloIzquierda([2]));
+
+//#21
+
+function rotarArregloDerecha(arreglo){
+  let resultado = [];
+  let auxiliar = arreglo.shift();
+  resultado = arreglo;
+  resultado.push(auxiliar);
+  return resultado;
+}
+
+//console.log(rotarArregloDerecha([1,2,3,4]));
+
+//#22
+
+function invertirArreglo(arreglo){
+    const resultado = [];
+    let auxiliar = arreglo.length-1;
+    for(let i=0; i<arreglo.length; i++){
+      resultado.push(arreglo[auxiliar--]);
+
+    }
+    return resultado;
+}
+
+//console.log(invertirArreglo([8,7,6,5,4,3,2,1,0,1]));
+
+//#23
+
+function invertirCadena(cadena){
+    let resultado = "";
+    let auxiliar = cadena.length-1;
+    for(let i=0; i<cadena.length; i++){
+      resultado += (cadena[auxiliar--]);
+
+    }
+    return resultado;
+}
+
+//console.log(invertirCadena("OGEID le óirum son eS"));
+
+//#24
+
+function unirDosArreglos(arreglo1, arreglo2){
+  let resultado = [];
+  resultado = arreglo1;
+  for(let i=0; i<arreglo2.length; i++){
+    resultado.push(arreglo2[i]);
+  }
+  return resultado;
+}
+
+console.log(unirDosArreglos([1,2,3], [3,7,9]));
+
+function diferenciaSimetricaArreglos(arreglo1, arreglo2){
+    const resultado = arreglo1;
+    for(let i=0; i<arreglo2.length; i++){
+
+        for(let j=0; j<arreglo1.length; j++){
+
+            if(arreglo2[i]!==arreglo1[j]){
+                resultado.push(arreglo2[i]);
+                break;
+            }else{
+              break;
+            }
+        }
+    
+  }
+  return resultado;
+
+}
+
+console.log(diferenciaSimetricaArreglos([1,3,3], [3,1,9]));
