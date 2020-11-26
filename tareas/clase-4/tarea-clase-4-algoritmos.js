@@ -228,10 +228,10 @@ function factorial(valor = 10){
 */
 // #7
 
-function sumarImparesMayores10Menores30(){
+function sumarImparesMayoresDiezMenoresTreinta(){
   let resultado=0;
 
-  for(let i = 11; i<=30; i+2){
+  for(let i = 11; i<=30; i=i+2){
     if(i%2 !==0){
       resultado += i;
     }
@@ -239,6 +239,6 @@ function sumarImparesMayores10Menores30(){
   return resultado;
 }
 
-console.log(sumarImparesMayores10Menores30());
+console.log(sumarImparesMayoresDiezMenoresTreinta());
 
 
