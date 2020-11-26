@@ -153,3 +153,89 @@ Desafío de programación #51. Find the frequency of characters inside a string.
 Desafío de programación #52. Calculate Fibonacci(500) with high precision (all decimals)
 Desafío de programación #53. Calculate 70! with high precision (all decimals)
  */
+
+ //#1
+ function imprimirDecena(orden=1){
+  const resultado = [];
+    if(orden == 1){
+      for(let i=1; i<=10; i++){
+        resultado.push(i);
+      }
+    }else {
+      for(let i = 10; i>0; i--){
+        resultado.push(i);
+      }
+    }
+    console.log(resultado);
+ }
+//imprimirDecena();
+//imprimirDecena(0);
+
+//#2
+function imprimirImpares(){
+  const resultado = [];
+  for(let i = 1; i<=100; i++){
+    if(i%2 !==0){
+      resultado.push(i);
+    }
+  }
+  console.log(resultado);
+}
+
+//#3: Imprimí la tabla de multiplicación del 7
+
+function imprimirTablaDel(valor){
+  for(let i=0; i<=10; i++){
+        console.log(`${valor} * ${i} = ${i*valor}`);
+      }
+  return '';
+}
+//imprimirTablaDel(7);
+
+function todasLasTablas(){
+  for(let i = 1; i<10;i++){
+    console.log(imprimirTablaDel(i));
+  }
+}
+
+//todasLasTablas();
+
+//#5
+function sumaArray(){
+  const arreglo = [1,2,3,4,5,6,7,8,9,10];
+  let sumatoria = 0;
+  for(let i=0; i<arreglo.length; i++){
+    sumatoria += arreglo[i];
+  }
+  console.log('El resultado de la suma del array es:'+sumatoria);
+}
+
+//sumaArray();
+
+
+//#6
+let resultado = 1;
+function factorial(valor = 10){
+    if (valor !== 1){
+      resultado = valor * factorial(valor-1);
+    }
+    return resultado;
+  }
+
+//console.log(factorial(10));
+
+// #7
+function sumarImparesMayores10Menores30(){
+  let resultado=0;
+
+  for(let i = 11; i<=30; i+2){
+    if(i%2 !==0){
+      resultado +=i;
+    }
+  }
+  console.log(Number(resultado));
+}
+
+sumarImparesMayores10Menores30();
+
+
