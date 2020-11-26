@@ -154,6 +154,8 @@ Desafío de programación #52. Calculate Fibonacci(500) with high precision (all
 Desafío de programación #53. Calculate 70! with high precision (all decimals)
  */
 
+
+ /*
  //#1
  function imprimirDecena(orden=1){
   const resultado = [];
@@ -214,7 +216,7 @@ function sumaArray(){
 
 
 //#6
-let resultado = 1;
+//let resultado = 1;
 function factorial(valor = 10){
     if (valor !== 1){
       resultado = valor * factorial(valor-1);
@@ -223,19 +225,20 @@ function factorial(valor = 10){
   }
 
 //console.log(factorial(10));
-
+*/
 // #7
+
 function sumarImparesMayores10Menores30(){
   let resultado=0;
 
   for(let i = 11; i<=30; i+2){
     if(i%2 !==0){
-      resultado +=i;
+      resultado += i;
     }
   }
-  console.log(Number(resultado));
+  return resultado;
 }
 
-sumarImparesMayores10Menores30();
+console.log(sumarImparesMayores10Menores30());
 
 
