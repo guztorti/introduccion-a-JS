@@ -594,4 +594,155 @@ function countWords(string){
   return newString.length==0?0:counter;
   
 }
-console.log(countWords(' Hola  '));
+//console.log(countWords(' Hola  '));
+
+//#32
+function capitalizeFirst(string){
+  if(string.length >0){
+    return string[0].toUpperCase() + string.slice(1,);
+  }else{
+    return string;
+  }
+}
+
+function capitalizeAll(string){
+  const newString = string.trim().toLowerCase();
+  let returnValue='', wordLimit = [];
+  let seriusWords = countWords(string)>1?true:false;
+
+
+  for(let i=0; i<newString.length;i++){
+    if (newString[i]===' '){
+        wordLimit.push(i);
+    }
+  }
+  if(seriusWords){
+    wordLimit.push(newString.length-1);
+  }
+  
+  returnValue += capitalizeFirst(newString.slice(0,wordLimit[0]));
+
+  for(let i=1;i<wordLimit.length;i++){
+    returnValue += ' ' + capitalizeFirst(newString.slice(wordLimit[i-1],wordLimit[i]).trim());
+  }
+  return returnValue;
+}
+
+//console.log(capitalizeAll('2'));
+
+//#33
+
+function calculateAddFromString(string){
+    const aux = string.split(',');
+    const numberArray = [];
+    for (let i=0; i<aux.length; i++){
+      numberArray.push(Number(aux[i]));
+    }
+    return sumaArreglo(numberArray);
+}
+
+//console.log(calculateAddFromString('1,2,3,4,5,6'));
+
+//#34
+
+function putWordsInArray(string){
+    return string.split(' ');
+}
+
+//console.log('todas las palabras se las lleva el array');
+//console.log(putWordsInArray('todas las palabras se las lleva el array'));
+
+//#35
+
+function stringCVSInBidirectionalArray(string){
+  const aux = string.split(',');
+  const returnValue = [];
+
+  for(let i=0;i<aux.length;i= i+2){
+    
+    returnValue.push([aux[i],aux[i+1]]);
+  }
+
+  return returnValue;
+}
+
+//console.table(stringCVSInBidirectionalArray('12,a,13,b,14,c'));
+
+//#36
+
+function stringToArrayOfChar(string){
+    return string.split('');
+}
+
+//console.log(stringToArrayOfChar('array de prueba'));
+
+//#37
+
+function stringInASCCI(string){
+    const returnValue = [];
+    for(let i=0; i<string.length; i++){
+      returnValue.push(string.charCodeAt(i));
+    }
+    return returnValue;
+}
+
+//console.log(stringInASCCI('AbC'));
+
+//#38
+
+function convertASCCIInString(array){
+  let returnValue = String.fromCharCode(array);
+  for(let i=0; i<array.length;i++){
+    returnValue += String.fromCharCode(array[i]);
+  }
+  return returnValue;
+}
+
+//console.log(convertASCCIInString([85,60,47,129,61]));
+
+//#39
+function sumarXATodosLosItems(arreglo, incremento){
+  const resultado = [];
+  for(let i=0;i<arreglo.length;i++){
+     resultado.push(arreglo[i]+incremento);
+  }
+  return resultado;
+}
+
+function implementCaesarCypher(mesage, prof){
+  let characters = stringInASCCI(mesage);
+  characters = sumarXATodosLosItems(characters,prof);
+  return convertASCCIInString(characters);
+}
+//console.log(implementCaesarCypher('Decifrando Enigma', 4));
+//console.log(implementCaesarCypher('Higmjverhs$Irmkqe', -4));
+
+//#40
+function implementBubbleSortAlgorithm(array){
+  const resultado = array;
+  let aux;
+  for(let i=0; i<array.length; i++){
+    for(let j=0; j<array.length; j++){
+      if(resultado[i]<resultado[j]){
+        aux= resultado[i];
+        resultado[i]=resultado[j];
+        resultado[j]=aux;
+      }
+    }
+  }
+  return resultado;
+}
+
+//console.log(implementBubbleSortAlgorithm([3,5,1,9,4,8,3]));
+
+//#41
+function calculateDistanceBetweenTwoPoints(point1,point2){
+  return Math.sqrt((point2[0]-point1[0])**2+(point2[1]-point1[1])**2);
+}
+console.log(calculateDistanceBetweenTwoPoints([2,1],[-2,3]));
+
+
+//#42
+function areIntersectingCircles(circle1, circle2){
+
+}
