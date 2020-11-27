@@ -125,8 +125,10 @@ Ejemplo:
 ==== FALTAN TRADUCIR
 Desafío de programación #28: Calculate the sum of first 100 prime numbers
 Desafío de programación #29: Print the distance between the first 100 prime numbers
-Desafío de programación #30-a: Create a function that will add two positive numbers of indefinite size. The numbers are received as strings and the result should be also provided as string.
-Desafío de programación #30-b: Create a function that will add two positive numbers of indefinite size. The numbers are received as strings and the result should be also provided as string.
+Desafío de programación #30-a: Create a function that will add two positive numbers of indefinite size. 
+  The numbers are received as strings and the result should be also provided as string.
+Desafío de programación #30-b: Create a function that will add two positive numbers of indefinite size. 
+  The numbers are received as strings and the result should be also provided as string.
 Desafío de programación #31-a. Create a function that will return the number of words in a text
 Desafío de programación #31-b. Create a function that will return the number of words in a text
 Desafío de programación #32. Create a function that will capitalize the first letter of each word in a text
@@ -155,7 +157,7 @@ Desafío de programación #53. Calculate 70! with high precision (all decimals)
  */
 
 
- /*
+ 
  //#1
  function imprimirDecena(orden=1){
   const resultado = [];
@@ -172,8 +174,8 @@ Desafío de programación #53. Calculate 70! with high precision (all decimals)
  }
 //imprimirDecena();
 //imprimirDecena(0);
-*/
-/*
+
+
 //#2
 function imprimirImpares(){
   const resultado = [];
@@ -184,21 +186,15 @@ function imprimirImpares(){
   }
   console.log(resultado);
 }
-*/
 
-/*
-//#3: Imprimí la tabla de multiplicación del 7
-
+//#3
 function imprimirTablaDel(valor){
   for(let i=0; i<=10; i++){
         console.log(`${valor} * ${i} = ${i*valor}`);
       }
   return '';
 }
-//imprimirTablaDel(7);
-*/ 
 
-/*
 //#4
 function todasLasTablas(){
   for(let i = 1; i<10;i++){
@@ -206,9 +202,7 @@ function todasLasTablas(){
   }
 }
 
-//todasLasTablas();
-*/
-
+//console.log(todasLasTablas());
 
 //#5
 function sumaArreglo(arreglo){
@@ -241,8 +235,6 @@ function poblarArreglo(){
 
 //sumaArreglo([1,2,3,4,5,6,7,8,9,10]);
 
-
-
 //#6
 let resultado = 1;
 function factorial(valor = 10){
@@ -254,8 +246,6 @@ function factorial(valor = 10){
 
 //console.log(factorial(10));
 
-
-/*
 // #7
 
 function sumarImparesMayoresDiezMenoresTreinta(){
@@ -270,9 +260,7 @@ function sumarImparesMayoresDiezMenoresTreinta(){
 }
 
 //console.log(sumarImparesMayoresDiezMenoresTreinta());
-*/
 
-/*
 //#8
 
 function pasarCelsiusAFarenheit(grados){
@@ -280,18 +268,15 @@ function pasarCelsiusAFarenheit(grados){
 }
 
 //console.log(`25ºC es el equivalente a ${pasarCelsiusAFarenheit(25)}`);
-*/
 
-/*
 //#9
 function pasarFarnheitACelcius(grados){
   return (grados -32)/1.8 + 'ºC';
 }
 
 //console.log(`77ºF es el equivalente a ${pasarFarnheitACelcius(77)}`);
-*/
 
-/*
+
 // #10
 function poblarYSumarArreglo(){
   const arreglo = poblarArreglo();
@@ -299,7 +284,7 @@ function poblarYSumarArreglo(){
   return 'la suma de los items de '+arreglo+' es:\n'+sumaArreglo(arreglo);
 }
 //console.log(poblarYSumarArreglo());
-*/
+
 
 
 //#11
@@ -491,25 +476,122 @@ function unirDosArreglos(arreglo1, arreglo2){
   return resultado;
 }
 
-console.log(unirDosArreglos([1,2,3], [3,7,9]));
+//console.log(unirDosArreglos([1,2,3], [3,7,9]));
 
 function diferenciaSimetricaArreglos(arreglo1, arreglo2){
+    const resultado = [];
+    for(let i=0; i<arreglo1.length; i++){
+      inicio:{
+          for(let j=0; j<arreglo2.length; j++){
+
+              if(arreglo1[i]===arreglo2[j]){
+                  break inicio;
+              }
+
+          }
+          
+          resultado.push(arreglo1[i]);
+          
+        }
+      }
+      //Ahora para el segundo arreglo
+      for(let i=0; i<arreglo2.length; i++){
+        inicio:{
+            for(let j=0; j<arreglo1.length; j++){
+  
+                if(arreglo2[i]===arreglo1[j]){
+                    break inicio;
+                }
+  
+            }
+            
+            resultado.push(arreglo2[i]);
+            
+          }
+        }
+    return resultado;
+}
+
+//console.log(diferenciaSimetricaArreglos([1,2,3], [3,7,11]));// devería devolver [1,2,7,11]
+
+//#26
+function restarDosArreglos(arreglo1, arreglo2){
     const resultado = arreglo1;
     for(let i=0; i<arreglo2.length; i++){
-
+      let repetido = false;
         for(let j=0; j<arreglo1.length; j++){
 
-            if(arreglo2[i]!==arreglo1[j]){
-                resultado.push(arreglo2[i]);
+            if(arreglo2[i]===arreglo1[j]){
+              repetido=true;
                 break;
-            }else{
-              break;
             }
+        }
+        if(!repetido){
+        resultado.push(arreglo2[i]);
         }
     
   }
   return resultado;
 
 }
+//console.log(restarDosArreglos([2,3,5,6,8],[3,5]));
 
-console.log(diferenciaSimetricaArreglos([1,3,3], [3,1,9]));
+//#27
+function eliminarElementosRepetidos(arreglo){
+  const resultado = [];
+  for(let i=0; i<arreglo.length; i++){
+    inicio:{
+        for(let j=i+1; j<arreglo.length; j++){
+
+            if(arreglo[i]===arreglo[j]){
+                break inicio;
+            }
+
+        }
+        
+        resultado.push(arreglo[i]);
+        
+      }
+    }
+  return resultado;
+}
+
+//console.log(eliminarElementosRepetidos([1,2,3,2,3,4,5]));
+
+//#28
+//console.log(sumaArreglo(imprimirPrimerosPrimos(100)));
+
+//#29
+function printDistanceBetweenFirstPrimeNumbers(limit=100){
+  const returnValue = [];
+  const primeNumbers= imprimirPrimerosPrimos(limit);
+  for(let i=1; i<primeNumbers.length; i++){
+    returnValue.push(primeNumbers[i]-primeNumbers[i-1]);
+  }
+  return returnValue;
+}
+//console.log(imprimirPrimerosPrimos(100));
+//console.log(printDistanceBetweenFirstPrimeNumbers(100));
+
+//#30
+
+function addFromString(value1,value2){
+  return (Number(value1)+Number(value2)).toString();
+}
+
+//console.log(addFromString('200','650'));
+
+//#31
+
+function countWords(string){
+  const newString = string.trim();
+  let counter = 1;
+  for(let i=0; i<newString.length;i++){
+    if (newString[i]!==newString[i+1]&&newString[i]===' '){
+      counter++;
+    }
+  }
+  return newString.length==0?0:counter;
+  
+}
+console.log(countWords(' Hola  '));
