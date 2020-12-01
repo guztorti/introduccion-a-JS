@@ -829,8 +829,113 @@ function deepCopy(object){
   return JSON.parse(JSON.stringify(object));
 }
 
+/*
 const original= [['test']];
 const copy = deepCopy(original);
 copy[0].push('another');
 console.log(original, copy);
+*/
 
+//#48
+function returnLongestWord(string){
+    const words = string.split(' ');
+    let returnValue = '';
+    for (let i = 0; i < words.length; i++) {
+      const element = words[i];
+      if(element.length > returnValue.length){
+        returnValue=element;
+      }
+      
+    }
+    return returnValue;
+}
+
+//console.log(returnLongestWord('La palabra más larga de esta cadena'));
+
+//#49
+function shuffle(array){
+  const evalArray = deepCopy(array);
+  for (let i = 0; i < evalArray.length; i++) {
+    const element = evalArray[i];
+    const j = Math.floor(Math.random()*(evalArray.length-1));
+    evalArray[i]=evalArray[j];
+    evalArray[j]=element;
+    
+  }
+  return evalArray;
+}
+//console.log(shuffle('Una muestra de lo que hace esta función'.split(' ')));
+
+//#50
+function createArrayNRandomElements(n){
+    const returnValue = [];
+    for (let i= 0; i < n-1; i++) {
+      returnValue.push(Math.floor(Math.random()*(n-1))+1);
+    }
+    return returnValue;
+}
+
+//console.log(createArrayNRandomElements(6));
+
+//#51
+//Each object has 2 fields: character and number of occurrences.
+function densityOfCharacters(string){
+    const evalArray = string.split('');
+    const returnValue = [];
+    
+
+    for (let i = 0; i < evalArray.length; i++) {
+      const element = evalArray[i];
+      let counter =1;
+
+      for (let j = i+1; j < evalArray.length; j++) {
+        const another = evalArray[j];
+        if(element===another){
+          counter++;
+          evalArray.splice(j-1, 1);
+        }
+        
+      }
+      const obj0 = {
+          char: element,
+          nOOcc: counter
+      };
+      returnValue.push(obj0);
+      
+    }
+    return returnValue;
+}
+
+//console.log(densityOfCharacters('occurrences'));
+
+//#52
+function showAllDecimalsFibonacci(array){
+  const returnValue = [];
+  array.forEach(element => {
+      returnValue.push(myFixed(element));
+  });
+  return returnValue;
+}
+
+function myFixed(x) {
+  var result = '';
+  var xStr = x.toString(10);
+  var digitCount = xStr.indexOf('e') === -1 ? xStr.length : (parseInt(xStr.substr(xStr.indexOf('e') + 1)) + 1);
+  
+  for (var i = 1; i <= digitCount; i++) {
+    var mod = (x % Math.pow(10, i)).toString(10);
+    var exponent = (mod.indexOf('e') === -1) ? 0 : parseInt(mod.substr(mod.indexOf('e')+1));
+    if ((exponent === 0 && mod.length !== i) || (exponent > 0 && exponent !== i-1)) {
+      result = '0' + result;
+    }
+    else {
+      result = mod.charAt(0) + result;
+    }
+  }
+  return result;
+}
+//console.log(showAllDecimalsFibonacci( calcularSerieFibonacci(500)));
+
+//#53
+
+console.log(myFixed(factorial(70)));
