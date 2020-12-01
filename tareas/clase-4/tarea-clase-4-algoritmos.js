@@ -142,7 +142,7 @@ Desafío de programación #39. Implement the Caesar cypher
 Desafío de programación #40. Implement the bubble sort algorithm for an array of numbers
 Desafío de programación #41. Create a function to calculate the distance between two points defined by their x, y coordinates
 Desafío de programación #42. Create a function that will return a Boolean value indicating if two circles defined by center coordinates and radius are intersecting
-Desafío de programación 43. Create a function that will receive a bi-dimensional array as argument and a number and will extract as a unidimensional array the column specified by the number
+Desafío de programación #43. Create a function that will receive a bi-dimensional array as argument and a number and will extract as a unidimensional array the column specified by the number
 Desafío de programación #44. Create a function that will convert a string containing a binary number into a number
 Desafío de programación #45. Create a function to calculate the sum of all the numbers in a jagged array (array contains numbers or other arrays of numbers on an unlimited number of levels)
 Desafío de programación #46-a. Find the maximum number in a jagged array of numbers or array of numbers
@@ -739,10 +739,98 @@ function implementBubbleSortAlgorithm(array){
 function calculateDistanceBetweenTwoPoints(point1,point2){
   return Math.sqrt((point2[0]-point1[0])**2+(point2[1]-point1[1])**2);
 }
-console.log(calculateDistanceBetweenTwoPoints([2,1],[-2,3]));
+//console.log(calculateDistanceBetweenTwoPoints([2,1],[-3,4]));
 
 
 //#42
 function areIntersectingCircles(circle1, circle2){
+  const x1 = circle1[0], y1 = circle1[1], r1 = circle1[2];
+  const x2 = circle2[0], y2 = circle2[1], r2 = circle2[2];
+  const distanceBetweenCenters = calculateDistanceBetweenTwoPoints([x1,y1],[x2,y2]);
+  return (distanceBetweenCenters < r1+r2);
 
 }
+
+//console.log(areIntersectingCircles([2,1,2],[3,4,1]));
+
+//#43
+
+function estractColumnToArray(array, column){
+  const returnValue = [];
+    for(let i=0; i<array.length; i++){
+      returnValue.push(array[i][column-1])
+    }
+    return returnValue;
+}
+
+//console.log(estractColumnToArray([[12,'a'],[13,'b'],[14,'c'],[14,'a']],2));
+
+//#44
+function convertBinariToDecimal(numberBinary){
+  const arrayBinary = stringToArrayOfChar(numberBinary);
+  let returnValue=0;
+  let j =0;
+  for(let i=arrayBinary.length-1; i>=0;i--){
+    returnValue += arrayBinary[i]*(2**j);
+    j++;
+  }
+  return returnValue;
+} 
+
+//console.log(convertBinariToDecimal('1010'));
+
+//#45
+function sumJaggedArray(array){
+  let returnValue=0;
+  for (let i = 0; i < array.length; i++) {
+    if(typeof array[i] !== 'number'){
+      returnValue += sumJaggedArray(array[i]);
+    }else {
+      returnValue+=array[i];
+    }
+    
+  }
+  return returnValue;
+}
+//console.log(sumJaggedArray( [[2,1,3],4,[3,2]]));
+
+//#46
+function returnMaxInJaggedArray(array){
+  let returnValue, firstTime=true; ;
+  for (let i = 0; i < array.length; i++) {
+    if(typeof array[i] !== 'number'){
+
+      if (firstTime){
+      returnValue = returnMaxInJaggedArray(array[i]);
+      }else {
+        returnValue = Math.max(returnValue, returnMaxInJaggedArray(array[i]));
+      }
+      firstTime=false;
+
+      
+    }else {
+      if (firstTime){
+        returnValue = array[i];
+        firstTime = false;
+      }
+
+      returnValue = Math.max(returnValue, array[i]);
+    }
+    
+  }
+  return returnValue;
+}
+
+//console.log(returnMaxInJaggedArray( [[2,5,3],4,[3,2]]));
+
+//#47
+
+function deepCopy(object){
+  return JSON.parse(JSON.stringify(object));
+}
+
+const original= [['test']];
+const copy = deepCopy(original);
+copy[0].push('another');
+console.log(original, copy);
+
