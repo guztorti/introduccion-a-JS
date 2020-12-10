@@ -49,3 +49,4 @@ document.querySelector("#boton-calcular").onclick = function(){
 
     document.querySelector('#suma-total').textContent = horas + ':' + minutos + ':' + segundos;
     }
+    

@@ -18,3 +18,4 @@ document.querySelector('#boton-enviar').onclick = function(){
     document.querySelector('h1').textContent="Bienvenido "+nombre1+"!";
     document.querySelector('#formulario').setAttribute('hidden', "");
  }
+ 
