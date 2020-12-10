@@ -53,35 +53,31 @@ console.log(compararEdadConNosotros(edadUsuario));
 // Si no entendemos la respuesta, le decimos que no entendimos la respuesta.
 // Punto bonus: SI, NO, Si, No, si, no.
 
-function preguntarPorDocumento(){
-	let preguntarDeNuevo = true;
-	let pregunta = "¿Tiene documento?";
+function puedeIngresar(){
 
-	while (preguntarDeNuevo) {
-		let dni =(prompt(pregunta)||'').toUpperCase();
+	let tenerDNI = prompt('¿Tiene documento?','Ingrese si/no').trim().toUpperCase();
+	let edadUsuario = Number(prompt("¿cuántos años tienes?"));
 
-		if(dni.trim() === "SI"){
-			preguntarDeNuevo = false;
-			return true;
-		}else if(dni.trim() === "NO"){
-			preguntarDeNuevo=false;
-			return false;
-		}else if(dni.trim().length===0){
-			pregunta = "no ingresó ningún dato\n ¿Tiene documento?";	
-		}else {
-			pregunta = "NO ENTENDÍ LA RESPUESTA,\n\"¿Tiene documento?\""
-		}
+	if (tieneDNI(tenerDNI) &&	serMayor(edadUsuario)){
+		console.log("Puede entrar al bar, Bienvenido");
+	} else {
+		console.log("No puede entrar al bar, vuelva cuando pueda acreditar ser mayor");
 	}
 
 }
 
-if (preguntarPorDocumento() &&	preguntarMayorDeEdad()){
-	console.log("Puede entrar al bar, Bienvenido");
-} else {
-	console.log("No puede entrar al bar, vuelva cuando pueda acreditar ser mayor");
+function tieneDNI(respuesta){
+
+		if(dni === "SI"){
+			return true;
+		}else if(dni === "NO"){
+			return false;
+		}else {
+			return tieneDNI(prompt('¿Tiene documento?','Ingrese si/no'));
+		}
+
 }
 
-function preguntarMayorDeEdad(){
-	let edadUsuario = Number(prompt("¿cuántos años tienes?"));
+function serMayor(edadUsuario){
 	return edadUsuario>=18;
 }

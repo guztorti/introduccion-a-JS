@@ -906,7 +906,7 @@ function densityOfCharacters(string){
     return returnValue;
 }
 
-//console.log(densityOfCharacters('occurrences'));
+console.log(densityOfCharacters('occurrences'));
 
 //#52
 function showAllDecimalsFibonacci(array){
@@ -938,4 +938,4 @@ function myFixed(x) {
 
 //#53
 
-console.log(myFixed(factorial(70)));
+//console.log(myFixed(factorial(70)));
