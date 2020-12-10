@@ -10,13 +10,6 @@ document.querySelector('#procesar').onclick = function(){
     document.querySelector('#menor').textContent = menorDelArreglo(resultado);
     document.querySelector('#frecuente').textContent = masFrecuente(resultado);
 }
-
-
-
-// 1. calcular el promedio y mostrarlo en un <em> pre-creado con el texto "El promedio es..."
-// 2. obtener el número más pequeño y mostrarlo en un <em> pre-creado con el texto "El número más pequeño es..."
-// 3. obtener el número más grande y mostrarlo en un <em> pre-creado con el texto "El número más grande es..."
-// 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 function sumaArreglo(arreglo){
     let sumatoria = 0;
     for(let i=0; i<arreglo.length; i++){
